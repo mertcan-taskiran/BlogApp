@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BlogApp.Models.Blog>
 @{
     ViewBag.Title = "Index";
 }
@@ -6,33 +6,36 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-
             <!--card-->
-            <div class="card my-3 w-100">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/Content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-header">
-                            <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</span>
+            @foreach (var item in Model)
+            {
+                <div class="card my-3 w-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100 h-100" alt="image">
                         </div>
-                        <div class="card-body">
-
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <div class="card-text">
-                                <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> 50 View</span>
-                                <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> 5 Comment</span>
+                        <div class="col-md-8">
+                            <div class="card-header">
+                                <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
                             </div>
-                            <span class="badge rounded-pill text-bg-dark"><a href="/" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
+                            <div class="card-body">
+
+                                <h5 class="card-title">@item.Baslik</h5>
+                                <p class="card-text">@item.Aciklama</p>
+
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div class="card-text">
+                                    <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
+                                    <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> 5 Comment</span>
+                                </div>
+                                <span class="badge rounded-pill text-bg-dark"><a href="/" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+
         </div>
 
         <div class="col-md-3">
