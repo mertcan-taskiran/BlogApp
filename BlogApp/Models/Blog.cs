@@ -8,11 +8,13 @@ namespace BlogApp.Models
     public class Blog
     {
         public int Id { get; set; }
+        public string KullaniciAdi { get; set; }
         public string Baslik { get; set; }
         public string Aciklama { get; set; }
         public string Resim { get; set; }
         public string Icerik { get; set; }
         public DateTime EklenmeTarihi { get; set; }
+        public int Goruntulenme { get; set; }
         public bool Onay { get; set; }
         public bool Anasayfa { get; set; }
         public int KategoriId { get; set; }
