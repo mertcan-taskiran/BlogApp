@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Detay";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <!--breadcrumb-->
+            <div class="mt-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="link-dark" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="link-dark" href="#">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <h2>Başlık</h2>
+
+            <div>
+                <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</span>
+                <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> 50 View</span>
+                <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> 5 Comment</span>
+            </div>
+
+            <hr />
+
+            <!--image-->
+            <div class="mt-3 text-center">
+                <img src="/Content/images/card.jpeg" class="rounded-3" style="height:25rem; width:40rem;" alt="image">
+            </div>
+
+            <h3 class="mt-3 text-center">Kısa Açıklama</h3>
+
+            <p class="mt-3">
+                Lorem Ipsum Nedir?
+                Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
+                Nereden Gelir?
+                Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan "Lorem ipsum dolor sit amet" 1.10.32 sayılı bölümdeki bir satırdan gelmektedir.
+                1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir. Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir.
+            </p>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <!--search-->
+            <form class="d-flex mt-3" role="search">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <!--search end-->
+            <!--category-->
+            <div class="list-group mt-3">
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">All Categories</button>
+                <button type="button" class="list-group-item list-group-item-action">Category A</button>
+                <button type="button" class="list-group-item list-group-item-action">Category B</button>
+                <button type="button" class="list-group-item list-group-item-action">Category C</button>
+            </div>
+            <!--category end-->
+            <!--most read blogs-->
+            <h5 class="text-center mt-3">Most Read Blogs</h5>
+            <div class="card w-100 mt-2">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/Content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-header">
+                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</small></div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-eye"></i> 50</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--most read blogs end-->
+
+        </div>
+    </div>
+</div>
+

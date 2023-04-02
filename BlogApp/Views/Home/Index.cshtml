@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <!--card-->
+            <div class="card my-3 w-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/Content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-header">
+                            <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</span>
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <div class="card-text">
+                                <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> 50 View</span>
+                                <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> 5 Comment</span>
+                            </div>
+                            <span class="badge rounded-pill text-bg-dark"><a href="/" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <!--search-->
+            <form class="d-flex mt-3" role="search">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <!--search end-->
+            <!--category-->
+            <div class="list-group mt-3">
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">All Categories</button>
+                <button type="button" class="list-group-item list-group-item-action">Category A</button>
+                <button type="button" class="list-group-item list-group-item-action">Category B</button>
+                <button type="button" class="list-group-item list-group-item-action">Category C</button>
+            </div>
+            <!--category end-->
+            <!--most read blogs-->
+            <h5 class="text-center mt-3">Most Read Blogs</h5>
+            <div class="card w-100 mt-2">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/Content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-header">
+                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</small></div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-eye"></i> 50</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
