@@ -2,6 +2,7 @@
 using BlogApp.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,10 +58,47 @@ namespace BlogApp.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Hata", "Kullanıcı Oluşturma Hatası");
+                    ModelState.AddModelError("Error", "User could not be created");
                 }
             }
             return View(model);
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.Find(model.Username, model.Password);
+
+                if (user != null)
+                {
+                    var authManager = HttpContext.GetOwinContext().Authentication;
+                    var identityclaims = UserManager.CreateIdentity(user, "ApplicationCookie");
+                    var authProperties = new AuthenticationProperties();
+                    authProperties.IsPersistent = model.RememberMe;
+                    authManager.SignIn(authProperties, identityclaims);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("Error", "User Not Found");
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult LogOut()
+        {
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            authManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
