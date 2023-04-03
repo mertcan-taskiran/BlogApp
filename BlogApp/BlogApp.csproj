@@ -193,6 +193,7 @@
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Identity\IdentityDataContext.cs" />
+    <Compile Include="Identity\IdentityInitializer.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\DataContext.cs" />
