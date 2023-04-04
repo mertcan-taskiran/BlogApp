@@ -66,10 +66,14 @@ namespace BlogApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,EklenmeTarihi,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
+        //public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,EklenmeTarihi,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.KullaniciAdi = User.Identity.Name;
+                blog.EklenmeTarihi = DateTime.Now;
+
                 db.Bloglar.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
