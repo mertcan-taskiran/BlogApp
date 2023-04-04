@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BlogApp.Models.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Category List</li>
+            </ol>
+        </nav>
+
+        <h3>Category List</h3>
+        <hr />
+
+        <p>
+            @Html.ActionLink("Create Category", "Create", null, new { @class = "btn btn-dark btn-sm" })
+        </p>
+        <hr />
+
+        @*@if (TempData["KategoriEdit"] != null)
+        {
+            var kategori = (BlogApp.Models.Category)TempData["KategoriEdit"];
+            <div class="alert alert-success" role="alert">
+                <strong>@kategori.KategoriAdi</strong> Kayıt Güncellendi.
+            </div>
+        }
+
+        @if (TempData["KategoriCreate"] != null)
+        {
+            var kategori = (BlogApp.Models.Category)TempData["KategoriCreate"];
+            <div class="alert alert-warning" role="alert">
+                <strong>@kategori.KategoriAdi</strong> Kayıt Eklendi.
+            </div>
+        }*@
+
+        <table class="table table-hover table-bordered table-striped table-sm">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.KategoriAdi)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.BlogSayisi)
+                </th>*@
+                <th class="text-center"><i class="fa-solid fa-gear"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KategoriAdi)
+                    </td>
+                    @*<td style="width:8%;" class="text-center">
+                        @Html.DisplayFor(modelItem => item.BlogSayisi)
+                    </td>*@
+                    <td style="width:200px;">
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

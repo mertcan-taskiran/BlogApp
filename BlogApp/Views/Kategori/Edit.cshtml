@@ -1,0 +1,51 @@
+﻿@model BlogApp.Models.Kategori
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="link-dark" href="/Kategori">Category List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+            </ol>
+        </nav>
+
+        <h3>Update Category</h3>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KategoriAdi, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.KategoriAdi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Update" class="btn btn-dark btn-sm mt-3" />
+                        @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-primary btn-sm mt-3" })
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>  
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

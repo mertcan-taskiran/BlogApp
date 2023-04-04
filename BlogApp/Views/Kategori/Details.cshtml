@@ -1,0 +1,36 @@
+﻿@model BlogApp.Models.Kategori
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="link-dark" href="/Kategori">Category List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Category Details</li>
+            </ol>
+        </nav>
+
+        <h2>Category Details</h2>
+        <hr />
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.KategoriAdi)
+                </dt>
+
+                <dd class="mt-3">
+                    @Html.DisplayFor(model => model.KategoriAdi)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-primary btn-sm mt-3" })
+        </p>
+    </div>        
+</div>
