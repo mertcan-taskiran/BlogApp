@@ -71,7 +71,7 @@
                 <th style="width:90px;">
                     @Html.DisplayNameFor(model => model.Anasayfa)
                 </th>
-                <th class="text-center" style="width:190px;"><i class="fa-solid fa-gear"></i></th>
+                <th class="text-center" style="width:125px;"><i class="fa-solid fa-gear"></i></th>
             </tr>
 
             @foreach (var item in Model)
@@ -116,7 +116,7 @@
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })*@
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                 </td>
