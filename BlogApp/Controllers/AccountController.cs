@@ -99,6 +99,36 @@ namespace BlogApp.Controllers
             authManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Profile()
+        {
+            var id = HttpContext.GetOwinContext().Authentication.User.Identity.GetUserId();
+            var user = UserManager.FindById(id);
+
+            var data = new ProfilGuncelleme()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                Username = user.UserName
+            };
+
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult Profile(ProfilGuncelleme model)
+        {
+            var user = UserManager.FindById(model.Id);
+
+            user.Name = model.Name;
+            user.Surname = model.Surname;
+            user.Email = model.Email;
+            user.UserName = model.Username;
+
+            UserManager.Update(user);
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

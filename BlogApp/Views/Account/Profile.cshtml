@@ -1,0 +1,103 @@
+﻿@model BlogApp.Models.ProfilGuncelleme
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
+            </ol>
+        </nav>
+
+        <div class="col-md-8">
+
+            <!--form-->
+            <h3 class="col-md-12 text-center text-md-start"><i class="fa-solid fa-user"></i> My Profile</h3>
+            <hr />
+
+            @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "row" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                <div class="row text-center mt-3">
+                    <label class="col-md-2 col-form-label">Name</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row text-center mt-3">
+                    <label class="col-md-2 col-form-label">Surname</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(m => m.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row text-center mt-3">
+                    <label class="col-md-2 col-form-label">Username</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row text-center mt-3">
+                    <label class="col-md-2 col-form-label">Email</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row text-center my-3">
+                    <label class="col-md-2 col-form-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-dark col-6">Update</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-3">
+
+                <!--search-->
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control" type="search" placeholder="search" aria-label="search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <!--search end-->
+                <!--category-->
+                <div class="list-group mt-3">
+                    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">all categories</button>
+                    <button type="button" class="list-group-item list-group-item-action">category a</button>
+                    <button type="button" class="list-group-item list-group-item-action">category b</button>
+                    <button type="button" class="list-group-item list-group-item-action">category c</button>
+                </div>
+                <!--category end-->
+                <!--most read blogs-->
+                <h5 class="text-center mt-3">most read blogs</h5>
+                <div class="card w-100 mt-2">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-header">
+                                <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</small></div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">card title</h5>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-eye"></i> 50</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</div>
+
