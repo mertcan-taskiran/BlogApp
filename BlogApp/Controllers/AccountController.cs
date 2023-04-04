@@ -130,5 +130,24 @@ namespace BlogApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult SifreDegistir()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SifreDegistir(SifreDegistirme model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.ChangePassword(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
+        }
+
     }
 }
