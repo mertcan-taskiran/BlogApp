@@ -1,0 +1,128 @@
+﻿@model IEnumerable<BlogApp.Models.BlogModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog List</li>
+            </ol>
+        </nav>
+
+        <h2>Blog List</h2>
+        <hr />
+
+        <p>
+            @Html.ActionLink("Blog Ekle", "Create", null, new { @class = "btn btn-dark btn-sm" })
+        </p>
+        <hr />
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-warning" role="alert">
+                Blog Not Found
+            </div>
+        }
+
+        @*@if (TempData["BlogCreate"] != null)
+        {
+            var blog = (BlogApp.Models.Blog)TempData["BlogCreate"];
+            <div class="alert alert-success" role="alert">
+                <strong>@blog.Baslik</strong> Kayıt Eklendi.
+            </div>
+        }
+
+        @if (TempData["BlogEdit"] != null)
+        {
+            var blog = (BlogApp.Models.Blog)TempData["BlogEdit"];
+            <div class="alert alert-warning" role="alert">
+                <strong>@blog.Baslik</strong> Kayıt Güncellendi.
+            </div>
+        }*@
+
+        <table class="table table-hover table-bordered table-striped btn-sm">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.KullaniciAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KategoriAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baslik)
+                </th>
+                <th style="width:220px;">
+                    @Html.DisplayNameFor(model => model.Aciklama)
+                </th>
+                <th style="width:170px;">
+                    @Html.DisplayNameFor(model => model.EklenmeTarihi)
+                </th>
+                <th class="text-center" style="width:60px;">
+                    <i class="fa-regular fa-eye"></i>
+                </th>
+                <th style="width:50px;">
+                    @Html.DisplayNameFor(model => model.Onay)
+                </th>
+                <th style="width:90px;">
+                    @Html.DisplayNameFor(model => model.Anasayfa)
+                </th>
+                <th class="text-center" style="width:190px;"><i class="fa-solid fa-gear"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KategoriAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Goruntulenme)
+                </td>
+                <td class="text-center">
+                    @if (item.Onay)
+                    {
+                        <i class="fa-solid fa-circle-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa-solid fa-circle-xmark text-danger"></i>
+                    }
+                </td>
+                <td class="text-center">
+                    @if (item.Anasayfa)
+                    {
+                        <i class="fa-solid fa-circle-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa-solid fa-circle-xmark text-danger"></i>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+            }
+
+        </table>
+    </div>
+</div>
