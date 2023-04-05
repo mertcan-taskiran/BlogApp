@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -66,13 +67,25 @@ namespace BlogApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,EklenmeTarihi,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
-        public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,EklenmeTarihi,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
+        //public ActionResult Create(Blog blog, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 blog.KullaniciAdi = User.Identity.Name;
                 blog.EklenmeTarihi = DateTime.Now;
+
+                // image upload
+                //string yol = Path.Combine("../Content/images/" + file.FileName);
+                //file.SaveAs(Server.MapPath(yol));
+                //blog.Resim = file.FileName.ToString();
+                //if(file.ContentLength>0)
+                //{
+                //    var filename = Path.GetFileName(file.FileName);
+                //    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
+                //    file.SaveAs(path);
+
+                //}
 
                 db.Bloglar.Add(blog);
                 db.SaveChanges();
