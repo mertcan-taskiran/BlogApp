@@ -25,7 +25,8 @@ namespace BlogApp.Controllers
                 {
                     Id = i.Id,
                     Baslik = i.Baslik,
-                    KullaniciAdi = i.KullaniciAdi,              
+                    KullaniciAdi = i.KullaniciAdi,
+                    KategoriAdi = i.Kategori.KategoriAdi,
                     Resim = i.Resim,
                     EklenmeTarihi = i.EklenmeTarihi,
                     Onay = i.Onay,

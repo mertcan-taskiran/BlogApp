@@ -32,6 +32,17 @@ namespace BlogApp.Controllers
 
             return View(blog);
         }
+
+        public ActionResult BlogListesi(int ? id)
+        {
+            var blog = db.Bloglar.Where(i => i.Onay == true).AsQueryable();
+            if (id != null)
+            {
+                blog = blog.Where(i => i.KategoriId == id);
+            }
+            return View(blog.ToList());
+        }
+
         public ActionResult Detay(int id)
         {
             var blog = db.Bloglar.Find(id);

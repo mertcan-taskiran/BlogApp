@@ -20,6 +20,12 @@ namespace BlogApp.Controllers
             return View(db.Kategoriler.ToList());
         }
 
+        public PartialViewResult KategoriListesi()
+        {
+            var kategori = db.Kategoriler.ToList();
+            return PartialView(kategori);
+        }
+
         // GET: Kategori/Details/5
         public ActionResult Details(int? id)
         {

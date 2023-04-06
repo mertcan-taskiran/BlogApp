@@ -48,15 +48,10 @@
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            <!--search end-->
+
             <!--category-->
-            <div class="list-group mt-3">
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">All Categories</button>
-                <button type="button" class="list-group-item list-group-item-action">Category A</button>
-                <button type="button" class="list-group-item list-group-item-action">Category B</button>
-                <button type="button" class="list-group-item list-group-item-action">Category C</button>
-            </div>
-            <!--category end-->
+            @Html.Action("KategoriListesi", "Kategori")
+        
             <!--most read blogs-->
             <h5 class="text-center mt-3">Most Read Blogs</h5>
             <div class="card w-100 mt-2">

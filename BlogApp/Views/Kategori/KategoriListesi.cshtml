@@ -1,0 +1,8 @@
+﻿@model IEnumerable<BlogApp.Models.Kategori>
+<div class="list-group mt-3">
+    <a type="button" href="/Home/Index" class="list-group-item list-group-item-action active" aria-current="true">All Categories</a>
+    @foreach (var item in Model)
+    {
+        <a type="button" href="/Home/BlogListesi/@item.Id" class="list-group-item list-group-item-action">@item.KategoriAdi</a>
+    }
+</div>
