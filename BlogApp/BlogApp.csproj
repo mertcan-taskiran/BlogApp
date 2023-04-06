@@ -238,6 +238,7 @@
     <Content Include="Views\Home\BlogListesi.cshtml" />
     <Content Include="Views\Home\Ara.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Home\EnCokOkunan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

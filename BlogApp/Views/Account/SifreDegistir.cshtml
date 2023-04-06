@@ -56,39 +56,13 @@
         <div class="col-md-3">
 
             <!--search-->
-            <form class="d-flex mt-3" role="search">
-                <input class="form-control" type="search" placeholder="search" aria-label="search">
-                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-            <!--search end-->
+            @Html.Partial("_Search")
+
             <!--category-->
-            <div class="list-group mt-3">
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">all categories</button>
-                <button type="button" class="list-group-item list-group-item-action">category a</button>
-                <button type="button" class="list-group-item list-group-item-action">category b</button>
-                <button type="button" class="list-group-item list-group-item-action">category c</button>
-            </div>
-            <!--category end-->
+            @Html.Action("KategoriListesi", "Kategori")
+
             <!--most read blogs-->
-            <h5 class="text-center mt-3">most read blogs</h5>
-            <div class="card w-100 mt-2">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/content/images/card.jpeg" class="img-fluid rounded-start w-100 h-100" alt="image">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-header">
-                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-clock"></i> 3 mins ago</small></div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">card title</h5>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-text"><small class="text-body-secondary"><i class="fa-regular fa-eye"></i> 50</small></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @Html.Action("EnCokOkunan", "Home")
 
         </div>
     </div>

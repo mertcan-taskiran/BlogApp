@@ -49,10 +49,21 @@ namespace BlogApp.Controllers
             return View(ara);
         }
 
-            public ActionResult Detay(int id)
+        public PartialViewResult EnCokOkunan()
+        {
+            var encok = db.Bloglar.Where(i => i.Onay == true).OrderByDescending(i => i.Goruntulenme).Take(5).ToList();
+            return PartialView(encok);
+        }
+
+        public ActionResult Detay(int id)
         {
             var blog = db.Bloglar.Find(id);
             ViewBag.blog = blog;
+
+            var sayi = db.Bloglar.ToList().Find(x => x.Id == id);
+            sayi.Goruntulenme += 1;
+            db.SaveChanges();
+
             return View();
         }
 
