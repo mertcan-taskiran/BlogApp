@@ -17,10 +17,7 @@
         <h3>Create Blog</h3>
         <hr />
 
-
-
-        @*@using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype= "multipart/form-data" }))*@
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/Form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -48,7 +45,7 @@
                 <div class="form-group mt-3">
                     @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-8">
-                        <input type="file" name="file" id="file" class="form-control" />
+                        <input type="file" name="File" class="form-control" />
                         @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -130,7 +127,7 @@
 
                 <div class="form-group mt-3">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-dark btn-sm" />
+                        <button type="submit" class="btn btn-dark btn-sm">Create</button>
                         @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-primary btn-sm" })
                     </div>
                 </div>

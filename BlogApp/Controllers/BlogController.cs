@@ -25,7 +25,7 @@ namespace BlogApp.Controllers
                 {
                     Id = i.Id,
                     Baslik = i.Baslik,
-                    KullaniciAdi = i.KullaniciAdi,
+                    KullaniciAdi = i.KullaniciAdi,              
                     Resim = i.Resim,
                     EklenmeTarihi = i.EklenmeTarihi,
                     Onay = i.Onay,
@@ -62,13 +62,10 @@ namespace BlogApp.Controllers
             return View();
         }
 
-        // POST: Blog/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Blog/Create  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,EklenmeTarihi,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
-        //public ActionResult Create(Blog blog, HttpPostedFileBase file)
+        public ActionResult Create(Blog blog, HttpPostedFileBase File)
         {
             if (ModelState.IsValid)
             {
@@ -76,16 +73,10 @@ namespace BlogApp.Controllers
                 blog.EklenmeTarihi = DateTime.Now;
 
                 // image upload
-                //string yol = Path.Combine("../Content/images/" + file.FileName);
-                //file.SaveAs(Server.MapPath(yol));
-                //blog.Resim = file.FileName.ToString();
-                //if(file.ContentLength>0)
-                //{
-                //    var filename = Path.GetFileName(file.FileName);
-                //    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
-                //    file.SaveAs(path);
 
-                //}
+                string yol = Path.Combine("/Content/images/" + File.FileName);
+                File.SaveAs(Server.MapPath(yol));
+                blog.Resim = File.FileName.ToString();
 
                 db.Bloglar.Add(blog);
                 db.SaveChanges();
