@@ -144,8 +144,6 @@
     <Content Include="Content\images\card.jpeg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Sayfa\Anasayfa.html" />
-    <Content Include="Sayfa\Detay.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

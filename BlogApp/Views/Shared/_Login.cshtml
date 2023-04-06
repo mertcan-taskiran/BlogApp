@@ -4,9 +4,9 @@
     {
         if (this.User.IsInRole("admin"))
         {
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a href="/Admin/Index" class="nav-link">Admin</a>
-            </li>
+            </li>*@
             <li class="nav-item">
                 <a href="/Blog/Index" class="nav-link">BlogList</a>
             </li>
@@ -26,11 +26,8 @@
         else
         {
             <li class="nav-item">
-                <a href="/Blog/Index" class="nav-link">MyBlogList</a>
+                <a href="/Blog/Index" class="nav-link">BlogList</a>
             </li>
-            @*<li class="nav-item">
-                    <a href="/Blog/Create" class="nav-link">BlogCreate</a>
-                </li>*@
             <li class="nav-item">
                 <a href="/Account/Profile" class="nav-link">Account</a>
             </li>
