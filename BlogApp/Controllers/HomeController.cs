@@ -43,7 +43,13 @@ namespace BlogApp.Controllers
             return View(blog.ToList());
         }
 
-        public ActionResult Detay(int id)
+        public ActionResult Ara(string q)
+        {
+            var ara = db.Bloglar.Where(i => i.Onay == true && i.Baslik.Contains(q) || i.Aciklama.Contains(q)).ToList();
+            return View(ara);
+        }
+
+            public ActionResult Detay(int id)
         {
             var blog = db.Bloglar.Find(id);
             ViewBag.blog = blog;

@@ -238,6 +238,8 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Kategori\KategoriListesi.cshtml" />
     <Content Include="Views\Home\BlogListesi.cshtml" />
+    <Content Include="Views\Home\Ara.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
