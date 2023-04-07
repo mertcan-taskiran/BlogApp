@@ -25,7 +25,7 @@ namespace BlogApp.Controllers
                     Anasayfa = i.Anasayfa,
                     Goruntulenme = i.Goruntulenme,
                     Yorum = i.Yorum,
-                    Aciklama = i.Aciklama.Length>50?i.Aciklama.Substring(0,50)+("..."):i.Aciklama,
+                    Aciklama = i.Aciklama,
                     Icerik = i.Icerik     
                 })
                 .OrderByDescending(i => i.EklenmeTarihi).ToList();
@@ -35,7 +35,7 @@ namespace BlogApp.Controllers
 
         public ActionResult BlogListesi(int ? id)
         {
-            var blog = db.Bloglar.Where(i => i.Onay == true).AsQueryable();
+            var blog = db.Bloglar.Where(i => i.Onay == true).OrderByDescending(i => i.EklenmeTarihi).AsQueryable();
             if (id != null)
             {
                 blog = blog.Where(i => i.KategoriId == id);
@@ -45,7 +45,7 @@ namespace BlogApp.Controllers
 
         public ActionResult Ara(string q)
         {
-            var ara = db.Bloglar.Where(i => i.Onay == true && i.Baslik.Contains(q) || i.Aciklama.Contains(q)).ToList();
+            var ara = db.Bloglar.Where(i => i.Onay == true && i.Baslik.Contains(q) || i.Aciklama.Contains(q)).OrderByDescending(i => i.EklenmeTarihi).ToList();
             return View(ara);
         }
 

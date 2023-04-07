@@ -80,6 +80,7 @@ namespace BlogApp.Controllers
                 blog.Resim = File.FileName.ToString();
 
                 db.Bloglar.Add(blog);
+                TempData["BlogCreate"] = blog;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -118,6 +119,7 @@ namespace BlogApp.Controllers
 
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["BlogEdit"] = blog;
                 return RedirectToAction("Index");
             }
             ViewBag.KategoriId = new SelectList(db.Kategoriler, "Id", "KategoriAdi", blog.KategoriId);
@@ -147,6 +149,7 @@ namespace BlogApp.Controllers
             Blog blog = db.Bloglar.Find(id);
             db.Bloglar.Remove(blog);
             db.SaveChanges();
+            TempData["BlogDelete"] = blog;
             return RedirectToAction("Index");
         }
 

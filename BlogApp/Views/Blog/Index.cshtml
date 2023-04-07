@@ -29,7 +29,7 @@
             </div>
         }
 
-        @*@if (TempData["BlogCreate"] != null)
+        @if (TempData["BlogCreate"] != null)
         {
             var blog = (BlogApp.Models.Blog)TempData["BlogCreate"];
             <div class="alert alert-success" role="alert">
@@ -43,7 +43,15 @@
             <div class="alert alert-warning" role="alert">
                 <strong>@blog.Baslik</strong> Kayıt Güncellendi.
             </div>
-        }*@
+        }
+
+        @if (TempData["BlogDelete"] != null)
+        {
+            var blog = (BlogApp.Models.Blog)TempData["BlogDelete"];
+            <div class="alert alert-warning" role="alert">
+                <strong>@blog.Baslik</strong> Kayıt Silindi.
+            </div>
+        }
 
         <table class="table table-hover table-bordered table-striped btn-sm">
             <tr>
@@ -76,51 +84,51 @@
 
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KullaniciAdi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KategoriAdi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Baslik)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aciklama)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EklenmeTarihi)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Goruntulenme)
-                </td>
-                <td class="text-center">
-                    @if (item.Onay)
-                    {
-                        <i class="fa-solid fa-circle-check text-success"></i>
-                    }
-                    else
-                    {
-                        <i class="fa-solid fa-circle-xmark text-danger"></i>
-                    }
-                </td>
-                <td class="text-center">
-                    @if (item.Anasayfa)
-                    {
-                        <i class="fa-solid fa-circle-check text-success"></i>
-                    }
-                    else
-                    {
-                        <i class="fa-solid fa-circle-xmark text-danger"></i>
-                    }
-                </td>
-                <td>
-                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })*@
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KategoriAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Goruntulenme)
+                    </td>
+                    <td class="text-center">
+                        @if (item.Onay)
+                        {
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa-solid fa-circle-xmark text-danger"></i>
+                        }
+                    </td>
+                    <td class="text-center">
+                        @if (item.Anasayfa)
+                        {
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa-solid fa-circle-xmark text-danger"></i>
+                        }
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })*@
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
             }
 
         </table>

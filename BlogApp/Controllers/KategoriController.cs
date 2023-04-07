@@ -58,6 +58,7 @@ namespace BlogApp.Controllers
             {
                 db.Kategoriler.Add(kategori);
                 db.SaveChanges();
+                TempData["KategoriCreate"] = kategori;
                 return RedirectToAction("Index");
             }
 
@@ -90,6 +91,7 @@ namespace BlogApp.Controllers
             {
                 db.Entry(kategori).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["KategoriEdit"] = kategori;
                 return RedirectToAction("Index");
             }
             return View(kategori);
@@ -118,6 +120,7 @@ namespace BlogApp.Controllers
             Kategori kategori = db.Kategoriler.Find(id);
             db.Kategoriler.Remove(kategori);
             db.SaveChanges();
+            TempData["KategoriDelete"] = kategori;
             return RedirectToAction("Index");
         }
 

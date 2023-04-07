@@ -6,6 +6,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
+            <div class="row mt-3">
+                <h5>Search Results <i class="fa-solid fa-magnifying-glass fa-bounce"></i></h5>
+            </div>
             @if (Model.Count() == 0)
             {
                 <div class="alert alert-warning mt-3" role="alert">
@@ -13,40 +16,7 @@
                 </div>
             }
             <!--card-->
-            @foreach (var item in Model)
-            {
-                <div class="card my-3 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100 h-100" alt="image">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-header">
-                                <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
-                            </div>
-                            <div class="card-body">
-
-                                <h5 class="card-title">@item.Baslik</h5>
-                                @if (item.Aciklama.Length > 50)
-                                {
-                                    <p class="card-text">@item.Aciklama.Substring(0, 50)...</p>
-                                }
-                                else
-                                {
-                                    <p class="card-text">@item.Aciklama</p>
-                                }
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <div class="card-text">
-                                    <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
-                                    <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
-                                </div>
-                                <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+            @Html.Partial("_Card")
 
         </div>
 

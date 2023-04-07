@@ -239,6 +239,9 @@
     <Content Include="Views\Home\Ara.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Home\EnCokOkunan.cshtml" />
+    <Content Include="Views\Shared\_Card.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

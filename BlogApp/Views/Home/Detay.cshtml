@@ -21,19 +21,19 @@
             <h2 class="mt-3">@ViewBag.blog.Baslik</h2>
 
             <div>
-                <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
-                <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme</span>
-                <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> @ViewBag.blog.Goruntulenme</span>
+                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
+                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme View</span>
+                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @ViewBag.blog.Goruntulenme Comment</span>
             </div>
 
             <hr />
 
             <!--image-->
             <div class="mt-3 text-center">
-                <img src="/Content/images/@ViewBag.blog.Resim" class="rounded-3" style="height:25rem; width:40rem;" alt="image">
+                <img src="/Content/images/@ViewBag.blog.Resim" class="rounded-3" style="height:25rem; width:30rem;" alt="image">
             </div>
 
-            <h3 class="mt-3 text-center">@ViewBag.blog.Aciklama</h3>
+            <h5 class="mt-3 text-center">@ViewBag.blog.Aciklama</h5>
 
             <p class="mt-3">
                 @ViewBag.blog.Icerik

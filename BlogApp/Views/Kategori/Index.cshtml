@@ -22,21 +22,31 @@
         </p>
         <hr />
 
-        @*@if (TempData["KategoriEdit"] != null)
+        @if (TempData["KategoriCreate"] != null)
         {
-            var kategori = (BlogApp.Models.Category)TempData["KategoriEdit"];
+            var kategori = (BlogApp.Models.Kategori)TempData["KategoriCreate"];
             <div class="alert alert-success" role="alert">
+                <strong>@kategori.KategoriAdi</strong> Kayıt Eklendi.
+            </div>
+        }
+
+        @if (TempData["KategoriEdit"] != null)
+        {
+            var kategori = (BlogApp.Models.Kategori)TempData["KategoriEdit"];
+            <div class="alert alert-warning" role="alert">
                 <strong>@kategori.KategoriAdi</strong> Kayıt Güncellendi.
             </div>
         }
 
-        @if (TempData["KategoriCreate"] != null)
+        @if (TempData["KategoriDelete"] != null)
         {
-            var kategori = (BlogApp.Models.Category)TempData["KategoriCreate"];
+            var kategori = (BlogApp.Models.Kategori)TempData["KategoriDelete"];
             <div class="alert alert-warning" role="alert">
-                <strong>@kategori.KategoriAdi</strong> Kayıt Eklendi.
+                <strong>@kategori.KategoriAdi</strong> Kayıt Silindi.
             </div>
-        }*@
+        }
+
+
 
         <table class="table table-hover table-bordered table-striped table-sm">
             <tr>
