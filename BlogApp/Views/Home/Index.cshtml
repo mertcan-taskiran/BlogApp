@@ -5,9 +5,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
-            <div class="row mt-3">
-                <h5>Latest Posts <i class="fa-brands fa-blogger-b fa-bounce"></i></h5>
+
+        <div class="col-lg-9">
+
+            <div class="d-flex justify-content-between mt-3">
+                <p class="h5">Latest Posts <i class="fa-brands fa-blogger-b fa-bounce"></i></p>
+                @Html.Partial("_listorgrid")
             </div>
 
             <!--card-->
@@ -15,7 +18,7 @@
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3">
 
             <!--search-->
             @Html.Partial("_Search")
@@ -27,6 +30,6 @@
             @Html.Action("EnCokOkunan","Home")
 
         </div>
+
     </div>
 </div>
-

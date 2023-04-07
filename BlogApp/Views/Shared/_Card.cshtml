@@ -1,78 +1,92 @@
-﻿@foreach (var item in Model)
-{
-
-    <div class="card my-3 w-100">
-        <div class="row g-0 img-thumbnail">
-            <div class="col-md-5">
-                <a href="/Home/Detay/@item.Id"><img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100" alt="image" style="height:17rem;"></a>
-            </div>
-            <div class="col-md-7 d-flex flex-column">
-
-                <div class="card-header">
-                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
+﻿<div id="list-cards">
+    @foreach (var item in Model)
+    {
+        <div class="card my-3 w-100">
+            <div class="row g-0 img-thumbnail">
+                <div class="col-md-5">
+                    <a href="/Home/Detay/@item.Id"><img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100" alt="image" style="height:17rem;"></a>
                 </div>
+                <div class="col-md-7 d-flex flex-column">
 
-                <div class="card-body">
-                    @if (item.Baslik.Length > 60)
-                    {
-                        <h5 class="card-title">@item.Baslik.Substring(0, 60)...</h5>
-                    }
-                    else
-                    {
-                        <h5 class="card-title">@item.Baslik</h5>
-                    }
-
-                    @if (item.Aciklama.Length > 250)
-                    {
-                        <p class="card-text">@item.Aciklama.Substring(0, 250)...</p>
-                    }
-                    else
-                    {
-                        <p class="card-text">@item.Aciklama</p>
-                    }
-                </div>
-
-                <div class="card-footer d-flex justify-content-between">
-                    <div class="card-text">
-                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
-                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
-                    </div>
-                    <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    @*<div class="card my-3 w-100">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100 h-100" alt="image">
-                </div>
-                <div class="col-md-8">
                     <div class="card-header">
-                        <span class="badge rounded-pill text-bg-secondary"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
+                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
                     </div>
-                    <div class="card-body">
 
-                        <h5 class="card-title">@item.Baslik</h5>
-                        @if (item.Aciklama.Length > 50)
+                    <div class="card-body">
+                        @if (item.Baslik.Length > 60)
                         {
-                            <p class="card-text">@item.Aciklama.Substring(0, 50)...</p>
+                            <h5 class="card-title">@item.Baslik.Substring(0, 60)...</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-title">@item.Baslik</h5>
+                        }
+
+                        @if (item.Aciklama.Length > 250)
+                        {
+                            <p class="card-text">@item.Aciklama.Substring(0, 250)...</p>
                         }
                         else
                         {
                             <p class="card-text">@item.Aciklama</p>
                         }
                     </div>
+
                     <div class="card-footer d-flex justify-content-between">
                         <div class="card-text">
-                            <span class="badge rounded-pill text-bg-warning"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
-                            <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
+                            <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
+                            <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
                         </div>
                         <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
                     </div>
+
                 </div>
             </div>
-        </div>*@
-}
+        </div>
+    }
+</div>
+
+<div id="grid-cards">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mt-1">
+        @foreach (var item in Model)
+        {
+        <div class="col">
+            <div class="card img-thumbnail">
+                <div class="">
+                    <a href="/Home/Detay/@item.Id"><img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100" alt="image" style="height:17rem;"></a>
+                </div>
+                <div class="card-header">
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
+                </div>
+                <div class="card-body text-center" style="height:11rem;">
+                    @if (item.Baslik.Length > 25)
+                    {
+                        <h5 class="card-title">@item.Baslik.Substring(0, 25)...</h5>
+                    }
+                    else
+                    {
+                        <h5 class="card-title">@item.Baslik</h5>
+                    }
+
+                    @if (item.Aciklama.Length > 100)
+                    {
+                        <p class="card-text">@item.Aciklama.Substring(0, 100)...</p>
+                    }
+                    else
+                    {
+                        <p class="card-text">@item.Aciklama</p>
+                    }
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <div class="card-text">
+                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
+                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
+                    </div>
+                    <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More</a></span>
+                </div>
+            </div>
+        </div>
+
+        }
+    </div>
+    </div>

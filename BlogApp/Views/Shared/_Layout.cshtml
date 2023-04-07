@@ -6,6 +6,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
     <title>My Blog</title>
 </head>
 <body>
@@ -42,7 +43,39 @@
         };
 
         window.onscroll = calcScrollValue;
-        window.onload = calcScrollValue;
+        window.onload = calcScrollValue;      
+
+        $('#grid-button').on('click', function () {
+            $('#list-cards').hide();
+            $('#grid-cards').show();
+        });
+
+        $('#list-button').on('click', function () {
+            $('#grid-cards').hide();
+            $('#list-cards').show();
+        });
+
+        $(document).ready(function () {
+            var selectedButton = localStorage.getItem('selectedButton') || 'grid-button';
+            $("#" + selectedButton).addClass("active");
+
+            $("#list-button").click(function () {
+                $(this).addClass("active");
+                $("#grid-button").removeClass("active");
+                localStorage.setItem('selectedButton', 'list-button');
+            });
+
+            $("#grid-button").click(function () {
+                $(this).addClass("active");
+                $("#list-button").removeClass("active");
+                localStorage.setItem('selectedButton', 'grid-button');
+            });
+
+            // Sayfa yüklendiğinde seçili olan butonu tekrar seçili hale getir
+            $("#" + selectedButton).click();
+        });
+
+        
     </script>
 </body>
 </html>

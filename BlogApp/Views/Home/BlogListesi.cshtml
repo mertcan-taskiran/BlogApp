@@ -7,6 +7,11 @@
     <div class="row">
         <div class="col-md-9">
 
+            <div class="d-flex justify-content-between mt-3">
+                <p class="h5">Category</p>
+                @Html.Partial("_listorgrid")
+            </div>
+
             @if (Model.Count() == 0)
             {
                 <div class="alert alert-warning mt-3" role="alert">

@@ -2,6 +2,14 @@
     height: 11rem;
 }
 
+#btn-group button {
+    display: none;
+}
+
+#btn-group .active {
+    display: block;
+}
+
 /*@media (max-width: 1200px) {
     
 }
