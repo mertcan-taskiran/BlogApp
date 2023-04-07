@@ -13,7 +13,7 @@
 
     <!--navbar-->
     @Html.Partial("_Navbar")
-
+    @Html.Partial("_Search")
     @Html.Partial("_backtotop")
 
     @RenderBody()
@@ -22,6 +22,9 @@
     @Html.Partial("_Footer")
 
     <script>
+
+        // back to top
+
         let calcScrollValue = () => {
             let scrollProgress = document.getElementById("progress");
             let progressValue = document.getElementById("progress-value");
@@ -43,7 +46,9 @@
         };
 
         window.onscroll = calcScrollValue;
-        window.onload = calcScrollValue;      
+        window.onload = calcScrollValue;
+
+        // list or grid
 
         $('#grid-button').on('click', function () {
             $('#list-cards').hide();
@@ -71,11 +76,23 @@
                 localStorage.setItem('selectedButton', 'grid-button');
             });
 
-            // Sayfa yüklendiğinde seçili olan butonu tekrar seçili hale getir
             $("#" + selectedButton).click();
         });
 
-        
+        // search
+        var searchIcon = document.getElementById('search-icon');
+        var searchOverlay = document.getElementById('search-overlay');
+
+        searchIcon.addEventListener('click', function () {
+            searchOverlay.style.display = 'flex';
+        });
+
+        searchOverlay.addEventListener('click', function (event) {
+            if (event.target === searchOverlay) {
+                searchOverlay.style.display = 'none';
+            }
+        });
+
     </script>
 </body>
 </html>

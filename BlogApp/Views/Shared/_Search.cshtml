@@ -1,5 +1,49 @@
-﻿@using (Html.BeginForm("Ara", "Home", FormMethod.Get, new { @class = "d-flex mt-3" }))
-{
-    <input name="q" class="form-control" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-beat"></i></button>
-}
+﻿<style>
+    #search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    #search-popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        max-width: 80%;
+        background-color: #fff;
+        padding: 0 20px 20px 20px;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    /*#search-popup form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }*/
+
+</style>
+
+<div id="search-overlay">
+    <div id="search-popup">
+        @using (Html.BeginForm("Ara", "Home", FormMethod.Get, new { @class = "d-flex mt-3" }))
+        {
+            <input name="q" class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        }
+    </div>
+</div>
+
+
+    @*<input name="q" class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-beat"></i></button>*@
