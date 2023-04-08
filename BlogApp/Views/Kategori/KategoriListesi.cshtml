@@ -5,10 +5,10 @@
     <div class="row mt-3">
         @foreach (var item in Model)
         {
-            <div class="col-lg-6 col-md-4 col-6 text-center">
+            <div class="col-md-6 text-center">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="/Home/BlogListesi/@item.Id" class="btn btn-dark w-100 d-flex justify-content-between"><div>@item.KategoriAdi</div><div><i class="fa-solid fa-list"></i></div></a>
+                        <a href="/Home/BlogListesi/@item.Id" class="kategoriler btn btn-dark w-100 d-flex justify-content-between"><div>@item.KategoriAdi</div><div><i class="fa-solid fa-list"></i></div></a>
                     </li>
                 </ul>
             </div>

@@ -21,8 +21,9 @@ namespace BlogApp.Controllers
             {
                 Id = i.Id,
                 KategoriAdi = i.KategoriAdi,
-                BlogSayisi = i.Bloglar.Count()
-            });
+                BlogSayisi = i.Bloglar.Count()               
+        });
+            
             return View(kategoriler.ToList());
         }
 
