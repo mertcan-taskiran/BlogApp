@@ -2,7 +2,7 @@
     color: black;
 }
 
-.fa-sun {
+.fa-sun, .fa-moon {
     color: #fff;
 }
 
@@ -73,80 +73,3 @@
 .night-mode .changePassword {
     color: white;
 }
-/*body {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-.btn {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-.night-mode {
-    background-color: #333;
-    color: #f5f5f5;
-}
-
-.night-mode .btn {
-    background-color: #d9d9d9;
-    color: #000000;
-}
-
-.night-mode .card h5,
-.night-mode .card p {
-    color: #000000 !important;
-}
-
-    .night-mode .card, .night-mode .card-body, .night-mode .card-header, .night-mode .img-thumbnail {
-        background-color: #d9d9d9;
-    }
-
-.night-mode .btn:hover {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.night-mode .btn:focus,
-.night-mode .btn:active {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.breadcrumb a {
-    color: black;
-}
-
-.night-mode .breadcrumb a {
-    color: white !important;
-}
-
-.night-mode .breadcrumb .active {
-    color: white !important;
-}
-
-.fa-sun {
-    color: #fff;
-}
-
-.night-mode .table.table-hover.table-striped tr th,
-.night-mode .table.table-hover.table-striped tr td {
-    color: #fff;
-}
-
-.night-mode #search-popup button{
-    background-color:black;
-    color: white;
-}
-
-.night-mode #search-popup button:hover {
-    background-color: #333333;
-}
-
-.changePassword{
-    color: black;
-}
-
-.night-mode .changePassword {
-    color: white;
-}*/

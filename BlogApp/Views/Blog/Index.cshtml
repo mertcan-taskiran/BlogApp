@@ -53,21 +53,18 @@
             </div>
         }
 
-        <table class="table table-hover table-bordered table-striped btn-sm">
+        <table class="table table-hover table-bordered table-striped table-sm">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.KullaniciAdi)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.KategoriAdi)
                 </th>
-                <th>
+                <th style="width:320px;">
                     @Html.DisplayNameFor(model => model.Baslik)
                 </th>
-                <th style="width:220px;">
+                <th style="width:320px;">
                     @Html.DisplayNameFor(model => model.Aciklama)
                 </th>
-                <th style="width:170px;">
+                <th style="width:150px;">
                     @Html.DisplayNameFor(model => model.EklenmeTarihi)
                 </th>
                 <th class="text-center" style="width:60px;">
@@ -85,9 +82,6 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.KullaniciAdi)
-                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.KategoriAdi)
                     </td>
@@ -124,7 +118,6 @@
                         }
                     </td>
                     <td>
-                        @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })*@
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                     </td>

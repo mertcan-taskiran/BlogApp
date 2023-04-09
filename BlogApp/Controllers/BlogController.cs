@@ -24,7 +24,7 @@ namespace BlogApp.Controllers
                 .Select(i => new BlogModel()
                 {
                     Id = i.Id,
-                    Baslik = i.Baslik,
+                    Baslik = i.Baslik.Length > 30 ? i.Baslik.Substring(0, 30) + ("...") : i.Baslik,
                     KullaniciAdi = i.KullaniciAdi,
                     KategoriAdi = i.Kategori.KategoriAdi,
                     Resim = i.Resim,
@@ -33,7 +33,7 @@ namespace BlogApp.Controllers
                     Anasayfa = i.Anasayfa,
                     Goruntulenme = i.Goruntulenme,
                     Yorum = i.Yorum,
-                    Aciklama = i.Aciklama.Length > 20 ? i.Aciklama.Substring(0, 20) + ("...") : i.Aciklama,
+                    Aciklama = i.Aciklama.Length > 30 ? i.Aciklama.Substring(0, 30) + ("...") : i.Aciklama,
                     Icerik = i.Icerik
                 })
                 .OrderByDescending(i => i.EklenmeTarihi).ToList();

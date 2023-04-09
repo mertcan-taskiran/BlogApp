@@ -37,9 +37,9 @@
                             <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
                             <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
                         </div>
-                        <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More <i class="fa-solid fa-arrow-right"></i></a></span>
+                        <a href="/Home/Detay/@item.Id" class="btn btn-dark btn-sm">Read More</a>                       
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -47,46 +47,45 @@
 </div>
 
 <div id="grid-cards">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mt-1">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 mt-1">
         @foreach (var item in Model)
         {
-        <div class="col">
-            <div class="card img-thumbnail">
-                <div class="">
-                    <a href="/Home/Detay/@item.Id"><img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100" alt="image" style="height:17rem;"></a>
-                </div>
-                <div class="card-header">
-                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
-                </div>
-                <div class="card-body text-center" style="height:11rem;">
-                    @if (item.Baslik.Length > 25)
-                    {
-                        <h5 class="card-title">@item.Baslik.Substring(0, 25)...</h5>
-                    }
-                    else
-                    {
-                        <h5 class="card-title">@item.Baslik</h5>
-                    }
-
-                    @if (item.Aciklama.Length > 100)
-                    {
-                        <p class="card-text">@item.Aciklama.Substring(0, 100)...</p>
-                    }
-                    else
-                    {
-                        <p class="card-text">@item.Aciklama</p>
-                    }
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <div class="card-text">
-                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
-                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
+            <div class="col">
+                <div class="card img-thumbnail">
+                    <div class="">
+                        <a href="/Home/Detay/@item.Id"><img src="/Content/images/@item.Resim" class="img-fluid rounded-start w-100" alt="image" style="height:17rem;"></a>
                     </div>
-                    <span class="badge rounded-pill text-bg-dark"><a href="/Home/Detay/@item.Id" class="text-decoration-none text-white">Read More</a></span>
+                    <div class="card-header">
+                        <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @item.EklenmeTarihi</span>
+                    </div>
+                    <div class="card-body text-center" style="height:11rem;">
+                        @if (item.Baslik.Length > 25)
+                        {
+                            <h5 class="card-title">@item.Baslik.Substring(0, 25)...</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-title">@item.Baslik</h5>
+                        }
+
+                        @if (item.Aciklama.Length > 100)
+                        {
+                            <p class="card-text">@item.Aciklama.Substring(0, 100)...</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">@item.Aciklama</p>
+                        }
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <div class="card-text">
+                            <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @item.Goruntulenme</span>
+                            <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @item.Goruntulenme</span>
+                        </div>
+                        <a href="/Home/Detay/@item.Id" class="btn btn-dark btn-sm">Read More</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
         }
     </div>
-    </div>
+</div>
