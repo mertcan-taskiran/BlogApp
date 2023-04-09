@@ -1,11 +1,17 @@
-﻿
+﻿@model BlogApp.Models.Yorum
 @{
     ViewBag.Title = "Detay";
 }
 
+<style>
+    #card {
+        border: none;
+    }
+</style>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-lg-9">
 
             <!--breadcrumb-->
             <div class="mt-3">
@@ -17,39 +23,172 @@
                 </nav>
             </div>
 
-            <h2 class="mt-3">@ViewBag.blog.Baslik</h2>
-
-            <div>
-                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
-                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme View</span>
-                <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @ViewBag.blog.Goruntulenme Comment</span>
+            
+            <div id="card" class="card border-none">
+                <div class="card-header">
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme View</span>
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @ViewBag.yorumsayisi Comment</span>
+                </div>
+                <div class="card-body text-center">
+                    <h3>@ViewBag.blog.Baslik</h3>
+                    <img src="/Content/images/@ViewBag.blog.Resim" class="rounded mt-3 img-fluid" style="width: 30rem;" alt="image">
+                    <h6 class="mt-3 text-center">@ViewBag.blog.Aciklama</h6>
+                </div>
+                <p class="mx-3">
+                    @ViewBag.blog.Icerik
+                </p>
             </div>
+
+            @*<h2 class="mt-3">@ViewBag.blog.Baslik</h2>*@
+
+            @*<div>
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme View</span>
+                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @ViewBag.yorumsayisi Comment</span>
+                </div>*@
 
             <!--image-->
-            <div class="mt-3 text-center img-thumbnail">
-                <img src="/Content/images/@ViewBag.blog.Resim" class="rounded-3" style="height:25rem; width:30rem;" alt="image">
+            @*<div class="mt-3 text-center img-thumbnail">
+                    <img src="/Content/images/@ViewBag.blog.Resim" class="rounded-3" style="height:25rem; width:30rem;" alt="image">
+                </div>*@
+
+            @*<h5 class="mt-3 text-center">@ViewBag.blog.Aciklama</h5>*@
+
+            @*<p class="mt-3">
+                    @ViewBag.blog.Icerik
+                </p>*@
+
+            <hr />
+
+            <!--yorum-->
+
+            <div class="row">
+                @{ int a = 1; }
+                <script>
+                        $(function () {
+                            $('#@("puan"+ a)').rateYo({
+                                rating: @ViewBag.ortalama,
+                                readOnly: true,
+                                multiColor: {
+                                    "startColor": "#FF0000", //RED
+                                    "endColor": "#00FF00"  //GREEN
+                                }
+                            })
+                        })
+                </script>
+                <div class="d-flex flex-column justify-content-between align-items-center flex-md-row">
+
+                    <div class="d-flex align-items-center">
+                        <div class="fs-3">[@ViewBag.ortalama]</div>
+                        <div id="@("puan"+ a)"></div>
+                    </div>
+
+                    <h4 class="night-black-color">Comments ( <i class="fa-regular fa-comment text-center"></i> @ViewBag.yorumsayisi )</h4>
+
+                </div>
             </div>
 
-            <h5 class="mt-3 text-center">@ViewBag.blog.Aciklama</h5>
+            <div class="container bg-light mt-3 pt-1 pb-3 rounded">
 
-            <p class="mt-3">
-                @ViewBag.blog.Icerik
-            </p>
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("YorumGonder", "Home", FormMethod.Post))
+                    {
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h4>Rating and Comment</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-3">
+                                    <div id="PuanVer"></div>
+                                    <input type="hidden" id="rating" name="rating" />
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control", @rows = 5, placeholder = "Write your comment here..." })
+                                </div>
+                                <div class="col-md-3 mt-3">
+                                    <button type="submit" class="btn btn-dark btn-sm">Comment</button>
+                                    @Html.HiddenFor(model => model.BlogId)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Please sign in to post a comment !</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
 
+                @{ int i = 1; }
+                @foreach (var item in @ViewBag.yorumlar)
+                {
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="d-flex flex-column justify-content-between align-items-center flex-md-row">
+                                <div class="col-md-6 night-black-color">
+                                    <i class="fa-solid fa-user"></i>
+                                    <strong>@item.KullaniciId </strong>(@item.Tarih)
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div id="@("puanlar" +i)"></div>
+                                    <span class="mx-2 fw-bold">@item.Puan</span>
+                                </div>
+                                <script>
+                                    $(function () {
+                                        $('#@("puanlar"+i)').rateYo({
+                                            rating: @item.Puan,
+                                            readOnly: true,
+                                            starWidth: "20px",
+                                            starHeight: "20px",
+                                            multiColor: {
+                                                "startColor": "#FF0000", //RED
+                                                "endColor": "#00FF00"  //GREEN
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <p class="mx-2">@item.Aciklama</p>
+                        </div>
+
+                    </div>
+                    i++;
+
+                }
+            </div>
         </div>
 
-        <div class="col-md-3">
-
-            <!--search-->
-            @*@Html.Partial("_Search")*@
-
+        <div class="col-lg-3">
             <!--category-->
             @Html.Action("KategoriListesi", "Kategori")
-
             <!--most read blogs-->
             @Html.Action("EnCokOkunan", "Home")
-
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $("#PuanVer").rateYo({
+            rating: 0,
+            numStars: 5,
+            maxValue: 5,
+            fullStar: true,
+            multiColor: {
+                "startColor": "#FF0000", //RED
+                "endColor": "#00FF00"  //GREEN
+            },
+            onChange: function (rating, rateYoInstance) {
+                $('#rating').val(rating);
+            }
+        });
+    });
+</script>
 

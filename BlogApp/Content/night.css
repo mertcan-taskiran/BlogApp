@@ -40,7 +40,11 @@
 }
 
 .night-mode .card h5,
-.night-mode .card p {
+.night-mode .card p,
+.night-mode .card h4,
+.night-mode .card h3,
+.night-mode .card h6,
+.night-mode .card .night-black-color {
     color: #000000 !important;
 }
 

@@ -30,6 +30,8 @@ namespace BlogApp.Controllers
                 })
                 .OrderByDescending(i => i.EklenmeTarihi).ToList();
 
+
+
             return View(blog);
         }
 
@@ -57,6 +59,12 @@ namespace BlogApp.Controllers
 
         public ActionResult Detay(int id)
         {
+            var yorumlar = db.Yorumlar.Where(y => y.BlogId == id).OrderByDescending(y => y.Tarih).ToList();
+            ViewBag.yorumlar = yorumlar;
+
+            var sonuc = (from ortalama in db.Yorumlar where ortalama.BlogId == id select ortalama.Puan).DefaultIfEmpty(0).Average();
+            ViewBag.ortalama = Math.Round(sonuc);
+
             var blog = db.Bloglar.Find(id);
             ViewBag.blog = blog;
 
@@ -64,7 +72,25 @@ namespace BlogApp.Controllers
             sayi.Goruntulenme += 1;
             db.SaveChanges();
 
-            return View();
+            ViewBag.yorumsayisi = db.Yorumlar.ToList().Where(i => i.BlogId == id).Count();
+
+            var yorum = new Yorum()
+            {
+                BlogId = blog.Id
+            };
+
+            return View("Detay", yorum);
+        }
+
+        public ActionResult YorumGonder(Yorum yorum, int rating)
+        {
+            yorum.KullaniciId = User.Identity.Name;
+            yorum.Tarih = DateTime.Now;
+            yorum.Puan = Convert.ToInt32(rating);
+            db.Yorumlar.Add(yorum);
+            db.SaveChanges();
+
+            return RedirectToAction("Detay", "Home", new { id = yorum.BlogId });
         }
 
     }
