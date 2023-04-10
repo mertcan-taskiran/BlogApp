@@ -40,25 +40,6 @@
                 </p>
             </div>
 
-            @*<h2 class="mt-3">@ViewBag.blog.Baslik</h2>*@
-
-            @*<div>
-                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
-                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-eye"></i> @ViewBag.blog.Goruntulenme View</span>
-                    <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-comment"></i> @ViewBag.yorumsayisi Comment</span>
-                </div>*@
-
-            <!--image-->
-            @*<div class="mt-3 text-center img-thumbnail">
-                    <img src="/Content/images/@ViewBag.blog.Resim" class="rounded-3" style="height:25rem; width:30rem;" alt="image">
-                </div>*@
-
-            @*<h5 class="mt-3 text-center">@ViewBag.blog.Aciklama</h5>*@
-
-            @*<p class="mt-3">
-                    @ViewBag.blog.Icerik
-                </p>*@
-
             <hr />
 
             <!--yorum-->
@@ -118,7 +99,7 @@
                 else
                 {
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Please sign in to post a comment !</strong>
+                        <strong>Please @Html.ActionLink("sign", "Login", "Account", new { ReturnUrl = Request.RawUrl }, null) in to post a comment !</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 }

@@ -19,7 +19,7 @@
             <h3 class="col-md-12 text-center text-md-start"><i class="fa-solid fa-user"></i> Login</h3>
             <hr />
 
-            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "row" }))
+            @using (Html.BeginForm("Login", "Account", new { @class = "row", ReturnUrl = Request.QueryString["ReturnUrl"], FormMethod.Post }))
             {
                 <div class="row text-center mt-3">
                     <label class="col-md-2 col-form-label">Username</label>
