@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BlogApp.Models.BlogModel>
+﻿@model PagedList<BlogApp.Models.BlogModel>
+@using PagedList;
+@using PagedList.Mvc;
+       
 @{
     ViewBag.Title = "Index";
 }
@@ -16,19 +19,16 @@
             <!--card-->
             @Html.Partial("_Card")
 
+            <div class="text-center">
+                @Html.PagedListPager(Model, sayi => Url.Action("Index", new { sayi }))
+            </div>
         </div>
 
         <div class="col-lg-3">
-
-            <!--search-->
-            @*@Html.Partial("_Search")*@
-
             <!--category-->
             @Html.Action("KategoriListesi", "Kategori")
-
             <!--most read blogs-->
-            @Html.Action("EnCokOkunan","Home")
-
+            @Html.Action("EnCokOkunan", "Home")
         </div>
 
     </div>

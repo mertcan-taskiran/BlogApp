@@ -77,3 +77,27 @@
 .night-mode .changePassword {
     color: white;
 }
+
+.night-mode .pagination > li > a,
+.night-mode .pagination > li > span {
+    background-color: #d9d9d9;
+    color: black;
+}
+
+.night-mode .pagination > li > a:hover,
+.night-mode .pagination > li > span:hover,
+.night-mode .pagination > li > a:focus,
+.night-mode .pagination > li > span:focus {
+    background-color: whitesmoke;
+}
+
+.night-mode .pagination > .active > a,
+.night-mode .pagination > .active > span,
+.night-mode .pagination > .active > a:hover,
+.night-mode .pagination > .active > span:hover,
+.night-mode .pagination > .active > a:focus,
+.night-mode .pagination > .active > span:focus {
+    background-color: #808080;
+    border-color: #808080;
+    color: black;
+}

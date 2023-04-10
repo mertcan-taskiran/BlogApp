@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    
     <link href="~/Content/jquery.rateyo.min.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -10,140 +9,30 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/night.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.6.4.min.js"></script>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
     <title>My Blog</title>
 </head>
 <body>
 
     <!--navbar-->
     @Html.Partial("_Navbar")
-    @Html.Partial("_Search")
-    @Html.Partial("_backtotop")
 
+    <!--RenderBody-->
     @RenderBody()
 
     <!--footer-->
     @Html.Partial("_Footer")
 
+    <!--Js-->
+    @Html.Partial("_Search")
+    @Html.Partial("_backtotop")
+
     <script src="~/Content/jquery.min.js"></script>
     <script src="~/Content/jquery.rateyo.min.js"></script>
+    <script src="~/Content/BacktoTop.js"></script>
+    <script src="~/Content/Search.js"></script>
+    <script src="~/Content/ListorGrid.js"></script>
+    <script src="~/Content/Night.js"></script>
 
-    <script>
-        // back to top
-        let calcScrollValue = () => {
-            let scrollProgress = document.getElementById("progress");
-            let progressValue = document.getElementById("progress-value");
-            let pos = document.documentElement.scrollTop;
-            let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrollValue = Math.round((pos * 100) / calcHeight);
-
-            if (pos > 100) {
-                scrollProgress.style.display = "grid";
-            } else {
-                scrollProgress.style.display = "none";
-            }
-
-            scrollProgress.addEventListener("click", () => {
-                document.documentElement.scrollTop = 0;
-            });
-
-            scrollProgress.style.background = `conic-gradient(#03cc65 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
-        };
-
-        window.onscroll = calcScrollValue;
-        window.onload = calcScrollValue;
-
-        // list or grid
-        $('#grid-button').on('click', function () {
-            $('#list-cards').hide();
-            $('#grid-cards').show();
-        });
-
-        $('#list-button').on('click', function () {
-            $('#grid-cards').hide();
-            $('#list-cards').show();
-        });
-
-        $(document).ready(function () {
-            var selectedButton = localStorage.getItem('selectedButton') || 'grid-button';
-            $("#" + selectedButton).addClass("active");
-
-            $("#list-button").click(function () {
-                $(this).addClass("active");
-                $("#grid-button").removeClass("active");
-                localStorage.setItem('selectedButton', 'list-button');
-            });
-
-            $("#grid-button").click(function () {
-                $(this).addClass("active");
-                $("#list-button").removeClass("active");
-                localStorage.setItem('selectedButton', 'grid-button');
-            });
-
-            $("#" + selectedButton).click();
-        });
-
-        // search
-        var searchIcon = document.getElementById('search-icon');
-        var searchOverlay = document.getElementById('search-overlay');
-
-        searchIcon.addEventListener('click', function () {
-            searchOverlay.style.display = 'flex';
-        });
-
-        searchOverlay.addEventListener('click', function (event) {
-            if (event.target === searchOverlay) {
-                searchOverlay.style.display = 'none';
-            }
-        });
-
-        // gece - gündüz modu
-        function toggleNightMode() {
-            var body = document.getElementsByTagName("body")[0];
-            var buttons = document.getElementsByClassName("btn");
-            var h5Elements = document.querySelectorAll(".card h5");
-            var pElements = document.querySelectorAll(".card p");
-
-            if (body.classList.contains("night-mode")) {
-                body.classList.remove("night-mode");
-                for (var i = 0; i < buttons.length; i++) {
-                    buttons[i].classList.remove("btn-light");
-                    buttons[i].classList.add("btn-dark");
-                }
-                for (var i = 0; i < h5Elements.length; i++) {
-                    h5Elements[i].classList.remove("text-white");
-                }
-                for (var i = 0; i < pElements.length; i++) {
-                    pElements[i].classList.remove("text-white");
-                }
-            } else {
-                body.classList.add("night-mode");
-                for (var i = 0; i < h5Elements.length; i++) {
-                    h5Elements[i].classList.add("text-white");
-                }
-                for (var i = 0; i < pElements.length; i++) {
-                    pElements[i].classList.add("text-white");
-                }
-            }
-        }
-
-        // icon
-        const themeIcon = document.getElementById("theme-icon");
-        // localStorage'da 'theme' anahtarının varlığı kontrol edilir.
-        if (localStorage.getItem("theme") === "dark") {
-            toggleNightMode(); // Eğer 'dark' ise, gece modu aktifleştirilir.
-            themeIcon.classList.replace("fa-sun", "fa-moon"); // Buton ikonu güncellenir.
-        }
-        // Butona tıklandığında tema değiştirilir ve localStorage'a tema kaydedilir.
-        themeIcon.addEventListener("click", () => {
-            toggleNightMode();
-            if (document.body.classList.contains("night-mode")) {
-                themeIcon.classList.replace("fa-moon", "fa-sun");
-                localStorage.setItem("theme", "dark");
-            } else {
-                themeIcon.classList.replace("fa-sun", "fa-moon");
-                localStorage.setItem("theme", "light");
-            }
-        });
-    </script>
 </body>
 </html>

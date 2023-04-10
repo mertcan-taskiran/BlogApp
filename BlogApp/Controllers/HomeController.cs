@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BlogApp.Controllers
 {
@@ -11,7 +13,7 @@ namespace BlogApp.Controllers
     {
         DataContext db = new DataContext();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int sayi = 1)
         {
             var blog = db.Bloglar
                 .Where(i => i.Onay == true && i.Anasayfa == true)
@@ -28,9 +30,7 @@ namespace BlogApp.Controllers
                     Aciklama = i.Aciklama,
                     Icerik = i.Icerik     
                 })
-                .OrderByDescending(i => i.EklenmeTarihi).ToList();
-
-
+                .OrderByDescending(i => i.EklenmeTarihi).ToList().ToPagedList(sayi, 3);
 
             return View(blog);
         }
