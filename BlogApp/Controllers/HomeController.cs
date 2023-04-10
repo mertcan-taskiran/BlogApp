@@ -30,7 +30,7 @@ namespace BlogApp.Controllers
                     Aciklama = i.Aciklama,
                     Icerik = i.Icerik     
                 })
-                .OrderByDescending(i => i.EklenmeTarihi).ToList().ToPagedList(sayi, 3);
+                .OrderByDescending(i => i.EklenmeTarihi).ToList().ToPagedList(sayi, 9);
 
             return View(blog);
         }

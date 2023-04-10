@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BlogApp.Models.Yetenek>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Skill List</li>
+            </ol>
+        </nav>
+
+        <h3>Skill List</h3>
+
+        <hr />
+
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-dark btn-sm" })
+        </p>
+
+        <hr />
+
+        <table class="table table-hover table-bordered table-striped table-sm">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.YetenekAdi)
+                </th>
+                <th class="text-center" style="width: 10%">
+                    @Html.DisplayNameFor(model => model.Progress)
+                </th>
+                <th class="text-center"><i class="fa-solid fa-gear"></i></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YetenekAdi)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Progress)
+                    </td>
+                    <td style="width:115px;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model BlogApp.Models.Yetenek
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="link-dark" href="/Yetenek">Skill List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Delete Skill</li>
+            </ol>
+        </nav>
+
+        <h3>Delete Category</h3>
+        <hr />
+
+        <h3>Do you want to delete?</h3>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.YetenekAdi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.YetenekAdi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Progress)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Progress)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                    @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

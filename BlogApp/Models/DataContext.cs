@@ -15,5 +15,7 @@ namespace BlogApp.Models
         public DbSet<Blog> Bloglar { get; set; }
         public DbSet<Kategori> Kategoriler { get; set; }
         public DbSet<Yorum> Yorumlar { get; set; }
+
+        public System.Data.Entity.DbSet<BlogApp.Models.Yetenek> Yeteneks { get; set; }
     }
 }
