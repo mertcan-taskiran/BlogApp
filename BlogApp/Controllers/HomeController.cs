@@ -93,5 +93,11 @@ namespace BlogApp.Controllers
             return RedirectToAction("Detay", "Home", new { id = yorum.BlogId });
         }
 
+        public ActionResult About(Yetenek yetenek)
+        {
+            var yetenekler = db.Yeteneks.ToList();
+            return View(yetenekler);
+        }
+
     }
 }

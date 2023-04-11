@@ -1,6 +1,6 @@
 ﻿let calcScrollValue = () => {
-    let scrollProgress = document.getElementById("progress");
-    let progressValue = document.getElementById("progress-value");
+    let scrollProgress = document.getElementById("progressbacktotop");
+    let progressValue = document.getElementById("progressbacktotop-value");
     let pos = document.documentElement.scrollTop;
     let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     let scrollValue = Math.round((pos * 100) / calcHeight);

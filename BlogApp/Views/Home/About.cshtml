@@ -1,0 +1,252 @@
+﻿@model IEnumerable<BlogApp.Models.Yetenek>
+
+@{
+    ViewBag.Title = "About";
+}
+
+<style media="screen">
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .navbarx {
+        position: fixed;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+
+    .navbarx ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbarx ul li {
+        width: 200px;
+        position: relative;
+        text-align: right;
+    }
+
+    .navbarx ul li .dot {
+        color: #fff;
+        display: block;
+        padding: 5px 0;
+    }
+
+    .navbarx ul li .dot span {
+        display: inline-block;
+        background: #f44336;
+        letter-spacing: 1px;
+        padding: 10px 25px;
+        margin-right: 30px;
+        border-radius: 3px;
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    .navbarx ul li:hover .dot span {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    .navbarx ul li .dot span::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(7px, -50%);
+        border-left: 7px solid #f44336;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        display: block;
+    }
+
+    .navbarx ul li .dot::before,
+    .navbarx ul li .dot::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        border-radius: 50%;
+        display: block;
+        transition: .2s ease-out;
+    }
+
+    .navbarx ul li .dot::before {
+        height: 5px;
+        width: 5px;
+        border: 2px solid #333;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    .navbarx ul li .dot.active::before,
+    .navbarx ul li:hover .dot::before {
+        border-color: #f44336;
+        background: #f44336;
+    }
+
+    .navbarx ul li .dot::after {
+        height: 15px;
+        width: 15px;
+        border: 2px solid #f44336;
+        right: -5px;
+        transform: translateY(-50%) scale(0);
+    }
+
+    .navbarx ul li .dot.active::after,
+    .navbarx ul li:hover .dot::after {
+        transform: translateY(-50%) scale(1);
+    }
+
+    .sec {
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        background: #f9f9f9;
+        letter-spacing: 2px;
+    }
+
+    .sec:nth-child(odd) {
+        background: #ddd;
+    }
+</style>
+
+<nav class="navbarx">
+    <ul>
+        <li><a href="#about" class="dot active" data-scroll="about"><span>about</span></a></li>
+        <li><a href="#me" class="dot" data-scroll="me"><span>me</span></a></li>
+        <li><a href="#skills" class="dot" data-scroll="skills"><span>skills</span></a></li>
+        <li><a href="#progress" class="dot" data-scroll="progress"><span>progress</span></a></li>   
+        <li><a href="#contact" class="dot" data-scroll="contact"><span>contact</span></a></li>
+    </ul>
+</nav>
+
+<div class="sec" id="about">about</div>
+
+<div class="sec" id="me">me</div>
+
+<div class="sec" id="skills">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Skills</h2>
+                <hr />
+                <ul class="list-unstyled">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <h5><i class="fa-solid fa-code"></i> @item.YetenekAdi</h5>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sec" id="progress">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Progress</h2>
+                <hr />
+                @foreach (var item in Model)
+                {
+                <div class="mb-3">
+                    <h6>@item.YetenekAdi</h6>
+                    <div class="progress">
+                        @if (item.Progress < 20)
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ff0000;"></div>
+                        }
+                        else if (item.Progress < 40)
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ff8000;"></div>
+                        }
+                        else if (item.Progress < 60)
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ffff00"></div>
+                        }
+                        else if (item.Progress < 80)
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #bfff00;"></div>
+                        }
+                        else
+                        {
+                            <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #40ff00;"></div>
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sec" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Contact Me</h2>
+                <hr />
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="inputName" class="form-label">Name Surname</label>
+                            <input type="text" class="form-control" id="inputName" placeholder="Name Surname">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="example@example.com">
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="inputSubject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="inputMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="inputMessage" rows="4" placeholder="Message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(window).on('scroll', function () {
+
+            var link = $('.navbarx a.dot');
+            var top = $(window).scrollTop();
+
+            $('.sec').each(function () {
+                var id = $(this).attr('id');
+                var height = $(this).height();
+                var offset = $(this).offset().top - 150;
+                if (top >= offset && top < offset + height) {
+                    link.removeClass('active');
+                    $('.navbarx').find('[data-scroll="' + id + '"]').addClass('active');
+                }
+            });
+
+        });
+
+    });
+
+
+</script>
