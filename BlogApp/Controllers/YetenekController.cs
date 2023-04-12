@@ -10,6 +10,7 @@ using BlogApp.Models;
 
 namespace BlogApp.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class YetenekController : Controller
     {
         private DataContext db = new DataContext();
@@ -42,8 +43,6 @@ namespace BlogApp.Controllers
         }
 
         // POST: Yetenek/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,YetenekAdi,Progress")] Yetenek yetenek)
@@ -52,6 +51,7 @@ namespace BlogApp.Controllers
             {
                 db.Yeteneks.Add(yetenek);
                 db.SaveChanges();
+                TempData["YetenekCreate"] = yetenek;
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +84,7 @@ namespace BlogApp.Controllers
             {
                 db.Entry(yetenek).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["YetenekEdit"] = yetenek;
                 return RedirectToAction("Index");
             }
             return View(yetenek);
@@ -112,6 +113,7 @@ namespace BlogApp.Controllers
             Yetenek yetenek = db.Yeteneks.Find(id);
             db.Yeteneks.Remove(yetenek);
             db.SaveChanges();
+            TempData["YetenekDelete"] = yetenek;
             return RedirectToAction("Index");
         }
 

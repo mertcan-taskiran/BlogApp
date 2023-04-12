@@ -24,6 +24,33 @@
 
         <hr />
 
+        @if (TempData["YetenekCreate"] != null)
+        {
+            var yetenek = (BlogApp.Models.Yetenek)TempData["YetenekCreate"];
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@yetenek.YetenekAdi </strong>Skill Added.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["YetenekEdit"] != null)
+        {
+            var yetenek = (BlogApp.Models.Yetenek)TempData["YetenekEdit"];
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@yetenek.YetenekAdi </strong>Skill Updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["YetenekDelete"] != null)
+        {
+            var yetenek = (BlogApp.Models.Yetenek)TempData["YetenekDelete"];
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@yetenek.YetenekAdi </strong>Skill Deleted.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <table class="table table-hover table-bordered table-striped table-sm">
             <tr>
                 <th>

@@ -10,10 +10,12 @@ using BlogApp.Models;
 
 namespace BlogApp.Controllers
 {
+    //[Authorize(Roles = "admin")]
     public class KategoriController : Controller
     {
         private DataContext db = new DataContext();
 
+        [Authorize(Roles = "admin")]
         // GET: Kategori
         public ActionResult Index()
         {
@@ -33,6 +35,7 @@ namespace BlogApp.Controllers
             return PartialView(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Kategori/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,15 +51,15 @@ namespace BlogApp.Controllers
             return View(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Kategori/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         // POST: Kategori/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,KategoriAdi")] Kategori kategori)
@@ -65,13 +68,14 @@ namespace BlogApp.Controllers
             {
                 db.Kategoriler.Add(kategori);
                 db.SaveChanges();
-                TempData["KategoriCreate"] = kategori;
+                //TempData["KategoriCreate"] = kategori;
                 return RedirectToAction("Index");
             }
 
             return View(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Kategori/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -87,9 +91,8 @@ namespace BlogApp.Controllers
             return View(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // POST: Kategori/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,KategoriAdi")] Kategori kategori)
@@ -98,12 +101,13 @@ namespace BlogApp.Controllers
             {
                 db.Entry(kategori).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["KategoriEdit"] = kategori;
+                //TempData["KategoriEdit"] = kategori;
                 return RedirectToAction("Index");
             }
             return View(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Kategori/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -119,6 +123,7 @@ namespace BlogApp.Controllers
             return View(kategori);
         }
 
+        [Authorize(Roles = "admin")]
         // POST: Kategori/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -127,7 +132,7 @@ namespace BlogApp.Controllers
             Kategori kategori = db.Kategoriler.Find(id);
             db.Kategoriler.Remove(kategori);
             db.SaveChanges();
-            TempData["KategoriDelete"] = kategori;
+            //TempData["KategoriDelete"] = kategori;
             return RedirectToAction("Index");
         }
 

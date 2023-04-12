@@ -11,6 +11,7 @@ using BlogApp.Models;
 
 namespace BlogApp.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class BlogController : Controller
     {
         private DataContext db = new DataContext();

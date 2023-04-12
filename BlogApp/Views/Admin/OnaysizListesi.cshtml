@@ -1,66 +1,36 @@
-﻿@model IEnumerable<BlogApp.Models.BlogModel>
-
+﻿@model IEnumerable<BlogApp.Models.Blog>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "OnaysizListesi";
 }
 
 <div class="container">
-    <div class="row">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
+            <li class="breadcrumb-item"><a class="link-dark" href="/Admin/">Admin List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin Unapproved Blog List</li>
+        </ol>
+    </nav>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mt-3">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog List</li>
-            </ol>
-        </nav>
+    <h3>Admin Unapproved Blog List</h3>
+    <hr />
 
-        <h3>Blog List</h3>
-        <hr />
-
-        <p>
-            @Html.ActionLink("Create Blog", "Create", null, new { @class = "btn btn-dark btn-sm" })
-        </p>
-        <hr />
-
-        @if (Model.Count() == 0)
-        {
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Kayıt Bulunamadı.</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        }
-
-        @if (TempData["BlogCreate"] != null)
-        {
-            var blog = (BlogApp.Models.Blog)TempData["BlogCreate"];
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>@blog.Baslik</strong> Blog Added.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        }
-
-        @if (TempData["BlogEdit"] != null)
-        {
-            var blog = (BlogApp.Models.Blog)TempData["BlogEdit"];
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>@blog.Baslik</strong> Blog Updated.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        }
-
-        @if (TempData["BlogDelete"] != null)
-        {
-            var blog = (BlogApp.Models.Blog)TempData["BlogDelete"];
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>@blog.Baslik</strong> Blog Deleted.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        }
-
+    @if (Model.Count() == 0)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>No Records Found!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else
+    {
         <table class="table table-hover table-bordered table-striped table-sm">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.KategoriAdi)
+                    @Html.DisplayNameFor(model => model.KullaniciAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
                 </th>
                 <th style="width:320px;">
                     @Html.DisplayNameFor(model => model.Baslik)
@@ -87,7 +57,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.KategoriAdi)
+                        @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Baslik)
@@ -129,5 +102,7 @@
             }
 
         </table>
-    </div>
+    }
+
 </div>
+
