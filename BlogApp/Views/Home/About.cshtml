@@ -243,24 +243,24 @@
             <div class="col-md-12">
                 <h2 class="text-center">Contact Me</h2>
                 <hr />
-                <form>
+                <form action="/Contact/Send" method="post">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Name Surname</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Name Surname">
+                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name Surname" required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="example@example.com">
+                            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="example@example.com" required>
                         </div>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="inputSubject" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                        <input type="text" class="form-control" id="inputSubject" name="inputSubject" placeholder="Subject" required>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="inputMessage" class="form-label">Message</label>
-                        <textarea class="form-control" id="inputMessage" rows="4" placeholder="Message..."></textarea>
+                        <textarea class="form-control" id="inputMessage" name="inputMessage" rows="4" placeholder="Message..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark">Send</button>
                 </form>

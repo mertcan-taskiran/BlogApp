@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\YetenekController.cs" />
@@ -278,6 +279,7 @@
     <Content Include="Views\Admin\BlogListesi.cshtml" />
     <Content Include="Views\Admin\OnayListesi.cshtml" />
     <Content Include="Views\Admin\OnaysizListesi.cshtml" />
+    <Content Include="Views\Contact\ThankYou.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
