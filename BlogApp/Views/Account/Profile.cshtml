@@ -13,10 +13,9 @@
             </ol>
         </nav>
 
-        <div class="col-md-9">
+        <div class="col-md-12">
 
-            <!--form-->
-            <h3 class="col-md-12 text-center text-md-start"><i class="fa-solid fa-user"></i> My Profile</h3>
+            <h3 class="text-center text-md-start"><i class="fa-solid fa-user"></i> My Profile</h3>
             <hr />
 
             @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "row" }))
@@ -59,18 +58,6 @@
                     </div>
                 </div>
             }
-        </div>
-
-        <div class="col-md-3">
-
-            <!--search-->
-            @*@Html.Partial("_Search")*@
-
-            <!--category-->
-            @Html.Action("KategoriListesi", "Kategori")
-
-            <!--most read blogs-->
-            @Html.Action("EnCokOkunan", "Home")
 
         </div>
     </div>

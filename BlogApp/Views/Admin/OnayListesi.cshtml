@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlogApp.Models.Blog>
+﻿@model IEnumerable<BlogApp.Models.BlogModel>
 @{
     ViewBag.Title = "OnayListesi";
 }
@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
             <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
-            <li class="breadcrumb-item"><a class="link-dark" href="/Admin/">Admin List</a></li>
+            <li class="breadcrumb-item"><a class="link-dark" href="/Admin/">Admin Control</a></li>
             <li class="breadcrumb-item active" aria-current="page">Approved Blog List</li>
         </ol>
     </nav>
@@ -30,15 +30,15 @@
                     @Html.DisplayNameFor(model => model.KullaniciAdi)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
+                    @Html.DisplayNameFor(model => model.KategoriAdi)
                 </th>
-                <th style="width:320px;">
+                <th style="width:230px;">
                     @Html.DisplayNameFor(model => model.Baslik)
                 </th>
-                <th style="width:320px;">
+                <th style="width:230px;">
                     @Html.DisplayNameFor(model => model.Aciklama)
                 </th>
-                <th style="width:150px;">
+                <th style="width:170px;">
                     @Html.DisplayNameFor(model => model.EklenmeTarihi)
                 </th>
                 <th class="text-center" style="width:60px;">
@@ -60,7 +60,7 @@
                         @Html.DisplayFor(modelItem => item.KullaniciAdi)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+                        @Html.DisplayFor(modelItem => item.KategoriAdi)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Baslik)
@@ -95,8 +95,8 @@
                         }
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                        @Html.ActionLink("Edit", "Edit", "Blog", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", "Blog", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                     </td>
                 </tr>
             }

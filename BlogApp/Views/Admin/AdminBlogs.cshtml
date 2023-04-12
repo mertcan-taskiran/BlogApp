@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<BlogApp.Models.BlogModel>
 @{
-    ViewBag.Title = "OnaysizListesi";
+    ViewBag.Title = "AdminBlogs";
 }
 
 <div class="container">
@@ -8,11 +8,11 @@
         <ol class="breadcrumb mt-3">
             <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item"><a class="link-dark" href="/Admin/">Admin Control</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Admin Unapproved Blog List</li>
+            <li class="breadcrumb-item active" aria-current="page">Admin All Blogs</li>
         </ol>
     </nav>
 
-    <h3>Admin Unapproved Blog List</h3>
+    <h3>Admin All Blogs</h3>
     <hr />
 
     @if (Model.Count() == 0)
@@ -105,4 +105,5 @@
     }
 
 </div>
+
 

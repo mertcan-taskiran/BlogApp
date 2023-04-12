@@ -17,24 +17,73 @@ namespace BlogApp.Controllers
             ViewBag.Onaysayi = db.Bloglar.Where(i => i.Onay == true).Count();
             ViewBag.Onaysizsayi = db.Bloglar.Where(i => i.Onay == false).Count();
             ViewBag.Blogsayi = db.Bloglar.Count();
+
             return View();
         }
 
-        public ActionResult BlogListesi()
+        public ActionResult AdminBlogs()
         {
-            var blog = db.Bloglar.ToList();  
+            var blog = db.Bloglar.Select(i => new BlogModel()
+            {
+                Id = i.Id,
+                Baslik = i.Baslik.Length > 20 ? i.Baslik.Substring(0, 20) + ("...") : i.Baslik,
+                KullaniciAdi = i.KullaniciAdi,
+                KategoriAdi = i.Kategori.KategoriAdi,
+                Resim = i.Resim,
+                EklenmeTarihi = i.EklenmeTarihi,
+                Onay = i.Onay,
+                Anasayfa = i.Anasayfa,
+                Goruntulenme = i.Goruntulenme,
+                Yorum = i.Yorum,
+                Aciklama = i.Aciklama.Length > 20 ? i.Aciklama.Substring(0, 20) + ("...") : i.Aciklama,
+                Icerik = i.Icerik
+            })
+            .OrderByDescending(i => i.EklenmeTarihi).ToList();  
+
             return View(blog);
         }
 
         public ActionResult OnayListesi()
         {
-            var blog = db.Bloglar.Where(i => i.Onay == true).ToList();
+            var blog = db.Bloglar.Where(i => i.Onay == true).Select(i => new BlogModel()
+            {
+                Id = i.Id,
+                Baslik = i.Baslik.Length > 20 ? i.Baslik.Substring(0, 20) + ("...") : i.Baslik,
+                KullaniciAdi = i.KullaniciAdi,
+                KategoriAdi = i.Kategori.KategoriAdi,
+                Resim = i.Resim,
+                EklenmeTarihi = i.EklenmeTarihi,
+                Onay = i.Onay,
+                Anasayfa = i.Anasayfa,
+                Goruntulenme = i.Goruntulenme,
+                Yorum = i.Yorum,
+                Aciklama = i.Aciklama.Length > 20 ? i.Aciklama.Substring(0, 20) + ("...") : i.Aciklama,
+                Icerik = i.Icerik
+            })
+            .OrderByDescending(i => i.EklenmeTarihi).ToList();
+
             return View(blog);
         }
 
         public ActionResult OnaysizListesi()
         {
-            var blog = db.Bloglar.Where(i => i.Onay == false).ToList();
+            var blog = db.Bloglar.Where(i => i.Onay == false).Select(i => new BlogModel()
+            {
+                Id = i.Id,
+                Baslik = i.Baslik.Length > 20 ? i.Baslik.Substring(0, 20) + ("...") : i.Baslik,
+                KullaniciAdi = i.KullaniciAdi,
+                KategoriAdi = i.Kategori.KategoriAdi,
+                Resim = i.Resim,
+                EklenmeTarihi = i.EklenmeTarihi,
+                Onay = i.Onay,
+                Anasayfa = i.Anasayfa,
+                Goruntulenme = i.Goruntulenme,
+                Yorum = i.Yorum,
+                Aciklama = i.Aciklama.Length > 20 ? i.Aciklama.Substring(0, 20) + ("...") : i.Aciklama,
+                Icerik = i.Icerik
+            })
+            .OrderByDescending(i => i.EklenmeTarihi).ToList();
+
             return View(blog);
         }
 

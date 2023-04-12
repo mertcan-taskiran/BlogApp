@@ -9,34 +9,34 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-3">
                 <li class="breadcrumb-item"><a class="link-dark" href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Admin List</li>
+                <li class="breadcrumb-item active" aria-current="page">Admin Control</li>
             </ol>
         </nav>
 
-        <h3>Admin List</h3>
+        <h3>Admin Control</h3>
         <hr />
 
         <div class="col-md-3">
-            <div class="img-thumbnail">
-                <i class="fa-solid fa-chart-simple"></i>
-                <a href="/Admin/BlogListesi" class="btn btn-dark">Blogs <span class="badge bg-secondary">@ViewBag.Blogsayi</span></a>
+            <div class="img-thumbnail d-flex flex-column text-center">
+                <i class="fa-solid fa-chart-simple fa-5x"></i>
+                <a href="/Admin/AdminBlogs" class="btn btn-dark">All Blogs <span class="badge bg-secondary">@ViewBag.Blogsayi</span></a>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="img-thumbnail">
-                <i class="fa-solid fa-chart-simple"></i>
-                <a href="/Admin/OnayListesi" class="btn btn-dark">Approved <span class="badge bg-secondary">@ViewBag.Onaysayi</span></a>
+            <div class="img-thumbnail d-flex flex-column text-center">
+                <i class="fa-solid fa-chart-simple fa-5x"></i>
+                <a href="/Admin/OnayListesi" class="btn btn-dark">Approved Blogs <span class="badge bg-secondary">@ViewBag.Onaysayi</span></a>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="img-thumbnail">
-                <i class="fa-solid fa-chart-simple"></i>
-                <a href="/Admin/OnaysizListesi" class="btn btn-dark">Unapproved <span class="badge bg-secondary">@ViewBag.Onaysizsayi</span></a>
+            <div class="img-thumbnail d-flex flex-column text-center">
+                <i class="fa-solid fa-chart-simple fa-5x"></i>
+                <a href="/Admin/OnaysizListesi" class="btn btn-dark">Unapproved Blogs <span class="badge bg-secondary">@ViewBag.Onaysizsayi</span></a>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="img-thumbnail">
-                <i class="fa-solid fa-chart-simple"></i>
+            <div class="img-thumbnail d-flex flex-column text-center">
+                <i class="fa-solid fa-chart-simple fa-5x"></i>
                 <a href="/Kategori/Index" class="btn btn-dark">Categories</a>
             </div>
         </div>
