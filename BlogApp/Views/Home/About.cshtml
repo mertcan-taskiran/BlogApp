@@ -210,23 +210,23 @@
                         <div class="progress">
                             @if (item.Progress < 20)
                             {
-                                <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ff0000;"></div>
+                                <div class="progress-bar progress-bar-striped bg-dark progress-bar-animated" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100">@item.Progress</div>
                             }
                             else if (item.Progress < 40)
                             {
-                                <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ff8000;"></div>
+                                <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100">@item.Progress</div>
                             }
                             else if (item.Progress < 60)
                             {
-                                <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #ffff00"></div>
+                                <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100">@item.Progress</div>
                             }
                             else if (item.Progress < 80)
                             {
-                                <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #bfff00;"></div>
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100">@item.Progress</div>
                             }
                             else
                             {
-                                <div class="progress-bar" role="progressbar" style="width: @item.Progress%; background-color: #40ff00;"></div>
+                                <div class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" style="width: @item.Progress%;" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100">@item.Progress</div>
                             }
                         </div>
                     </div>
