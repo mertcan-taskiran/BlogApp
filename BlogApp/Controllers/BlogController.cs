@@ -67,7 +67,7 @@ namespace BlogApp.Controllers
         // POST: Blog/Create  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Blog blog, HttpPostedFileBase File)
+        public ActionResult Create(Blog blog, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -75,10 +75,20 @@ namespace BlogApp.Controllers
                 blog.EklenmeTarihi = DateTime.Now;
 
                 // image upload
+                if (file != null && file.ContentLength > 0)
+                {
+                    var extensition = Path.GetExtension(file.FileName);
+                    if (extensition == ".jpg" || extensition == ".png" || extensition == ".jpeg")
+                    {
+                        // Rastgele isim oluşturma
+                        string randomName = Guid.NewGuid().ToString("N").Substring(0, 10);
+                        string fileName = randomName + extensition;
 
-                string yol = Path.Combine("/Content/images/" + File.FileName);
-                File.SaveAs(Server.MapPath(yol));
-                blog.Resim = File.FileName.ToString();
+                        string yol = Path.Combine("~/Content/images/", fileName);
+                        file.SaveAs(Server.MapPath(yol));
+                        blog.Resim = fileName;
+                    }
+                }               
 
                 db.Bloglar.Add(blog);
                 TempData["BlogCreate"] = blog;
@@ -109,18 +119,43 @@ namespace BlogApp.Controllers
         // POST: Blog/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,KullaniciAdi,Baslik,Aciklama,Resim,Icerik,Goruntulenme,Onay,Anasayfa,KategoriId")] Blog blog, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                blog.KullaniciAdi = User.Identity.Name;
-                blog.EklenmeTarihi = DateTime.Now;
+                var existingBlog = db.Bloglar.Find(blog.Id);
+                if (existingBlog == null)
+                {
+                    return HttpNotFound();
+                }
 
-                db.Entry(blog).State = EntityState.Modified;
+                existingBlog.KullaniciAdi = User.Identity.Name;
+                existingBlog.Baslik = blog.Baslik;
+                existingBlog.Aciklama = blog.Aciklama;
+                existingBlog.Icerik = blog.Icerik;
+                existingBlog.KategoriId = blog.KategoriId;
+                existingBlog.Onay = blog.Onay;
+                existingBlog.Anasayfa = blog.Anasayfa;
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var extensition = Path.GetExtension(file.FileName);
+                    if (extensition == ".jpg" || extensition == ".png" || extensition == ".jpeg")
+                    {
+                        string randomName = Guid.NewGuid().ToString("N").Substring(0, 10);
+                        string fileName = randomName + extensition;
+
+                        string yol = Path.Combine("~/Content/images/", fileName);
+                        file.SaveAs(Server.MapPath(yol));
+                        existingBlog.Resim = fileName;
+                    }
+                }
+
                 db.SaveChanges();
-                TempData["BlogEdit"] = blog;
+                TempData["BlogEdit"] = existingBlog;
                 return RedirectToAction("Index");
             }
+
             ViewBag.KategoriId = new SelectList(db.Kategoriler, "Id", "KategoriAdi", blog.KategoriId);
             return View(blog);
         }

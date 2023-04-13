@@ -16,7 +16,8 @@
 
         <h3>Create Blog</h3>
         <hr />
-        
+        @*@ViewData["message"]*@
+
         @using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/Form-data" }))
         {
             @Html.AntiForgeryToken()
@@ -45,7 +46,7 @@
                 <div class="form-group mt-3">
                     @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-8">
-                        <input type="file" name="File" class="form-control" />
+                        <input type="file" name="file" class="form-control" />
                         @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
                     </div>
                 </div>
