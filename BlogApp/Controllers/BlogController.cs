@@ -67,6 +67,7 @@ namespace BlogApp.Controllers
         // POST: Blog/Create  
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(Blog blog, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)

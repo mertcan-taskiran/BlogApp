@@ -3,6 +3,10 @@
     ViewBag.Title = "Detay";
 }
 
+@section head {
+    <link href="~/Content/jquery.rateyo.min.css" rel="stylesheet" />
+}
+
 <style>
     #card {
         border: none;
@@ -23,7 +27,7 @@
                 </nav>
             </div>
 
-            
+
             <div id="card" class="card border-none">
                 <div class="card-header">
                     <span class="badge rounded-pill text-bg-dark"><i class="fa-regular fa-clock"></i> @ViewBag.blog.EklenmeTarihi</span>
@@ -36,7 +40,7 @@
                     <h6 class="mt-3 text-center">@ViewBag.blog.Aciklama</h6>
                 </div>
                 <p class="mx-3">
-                    @ViewBag.blog.Icerik
+                    @Html.Raw(@ViewBag.blog.Icerik)
                 </p>
             </div>
 
@@ -155,6 +159,7 @@
     </div>
 </div>
 
+
 <script>
     $(function () {
         $("#PuanVer").rateYo({
@@ -173,3 +178,6 @@
     });
 </script>
 
+@section scripts {
+    <script src="~/Content/jquery.rateyo.min.js"></script>
+}

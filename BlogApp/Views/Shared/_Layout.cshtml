@@ -2,14 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link href="~/Content/jquery.rateyo.min.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/night.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
     <link href="~/Content/PagedList.css" rel="stylesheet" />
     <title>My Blog</title>
 </head>
@@ -28,12 +27,13 @@
     @Html.Partial("_Search")
     @Html.Partial("_backtotop")
 
-    <script src="~/Content/jquery.min.js"></script>
-    <script src="~/Content/jquery.rateyo.min.js"></script>
+    <script src="~/Scripts/jquery-3.6.4.min.js"></script>
+    @*<script src="~/Content/jquery.min.js"></script>*@
+    @RenderSection("scripts", required: false)
     <script src="~/Content/BacktoTop.js"></script>
     <script src="~/Content/Search.js"></script>
     <script src="~/Content/ListorGrid.js"></script>
     <script src="~/Content/Night.js"></script>
-    
+
 </body>
 </html>
