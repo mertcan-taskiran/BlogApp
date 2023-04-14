@@ -35,6 +35,12 @@ namespace BlogApp.Controllers
             return PartialView(kategori);
         }
 
+        public PartialViewResult navbarkategori()
+        {
+            var kategori = db.Kategoriler.ToList();
+            return PartialView(kategori);
+        }
+
         [Authorize(Roles = "admin")]
         // GET: Kategori/Details/5
         public ActionResult Details(int? id)

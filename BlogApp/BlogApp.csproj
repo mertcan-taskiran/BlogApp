@@ -595,7 +595,6 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_backtotop.cshtml" />
     <Content Include="Views\Shared\_listorgrid.cshtml" />
-    <Content Include="Views\Shared\_dropdown.cshtml" />
     <Content Include="Views\Yetenek\Create.cshtml" />
     <Content Include="Views\Yetenek\Delete.cshtml" />
     <Content Include="Views\Yetenek\Details.cshtml" />
@@ -607,6 +606,7 @@
     <Content Include="Views\Admin\OnaysizListesi.cshtml" />
     <Content Include="Views\Contact\ThankYou.cshtml" />
     <Content Include="Views\Admin\AdminBlogs.cshtml" />
+    <Content Include="Views\Kategori\navbarkategori.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
