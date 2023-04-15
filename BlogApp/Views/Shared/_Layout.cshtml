@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="~/Content/Images/blogger.png" sizes="16x16">
     @RenderSection("head", required: false)
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
@@ -35,6 +36,13 @@
     <script src="~/Content/Search.js"></script>
     <script src="~/Content/ListorGrid.js"></script>
     <script src="~/Content/Night.js"></script>
-
+    <script>
+        let titleText = ["Welcome to my website", "My Blog and My Skills"];
+        let counter = 0;
+        setInterval(function () {
+            document.title = titleText[counter % titleText.length];
+            counter++;
+        }, 2000);
+    </script>
 </body>
 </html>

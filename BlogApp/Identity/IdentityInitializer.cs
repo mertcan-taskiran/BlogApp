@@ -33,7 +33,7 @@ namespace BlogApp.Identity
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser() { Name = "Mertcan", Surname="Taskiran", UserName="mertcantaskiran", Email="mertcn.taskiran@gmail.com",  };
-                manager.Create(user, "123456");
+                manager.Create(user, "123456mT");
                 manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
             }
@@ -43,7 +43,7 @@ namespace BlogApp.Identity
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser() { Name = "Mert", Surname = "Tas", UserName = "merttas", Email = "mertcan12furkan@gmail.com", };
-                manager.Create(user, "123456");
+                manager.Create(user, "123456mT");
                 manager.AddToRole(user.Id, "user");
             }
 

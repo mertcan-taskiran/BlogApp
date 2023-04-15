@@ -13,9 +13,7 @@ namespace BlogApp.Models
             // kategori
             var kategori = new List<Kategori>()
             {
-                new Kategori(){KategoriAdi = "Kategori 1"},
-                new Kategori(){KategoriAdi = "Kategori 2"},
-                new Kategori(){KategoriAdi = "Kategori 3"}
+                new Kategori(){KategoriAdi = "Kategori 1"}
             };
 
             foreach (var item in kategori)
@@ -37,22 +35,8 @@ namespace BlogApp.Models
                     Anasayfa = true,
                     Onay = true,
                     Icerik = "Kategori 1 Hakkında Yaptıklarım",
-                    Resim = "card.jpeg",
+                    Resim = "user.png",
                     KategoriId = 1,
-                    KullaniciAdi = "Mertcan"
-                },
-
-                new Blog()
-                {
-                    Baslik = "Başlık 2",
-                    Aciklama = "Kategori 2 Hakkında",
-                    EklenmeTarihi = DateTime.Now,
-                    Goruntulenme=0,
-                    Anasayfa = true,
-                    Onay = true,
-                    Icerik = "Kategori 2 Hakkında Yaptıklarım",
-                    Resim = "card.jpeg",
-                    KategoriId = 2,
                     KullaniciAdi = "Mertcan"
                 }
             };
